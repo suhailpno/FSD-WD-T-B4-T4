@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pro Income-Expense Tracker</title>
+    <!-- CSS & Tailwind CSS CDN -->
+     <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+    <style>
+        
+    </style>
+</head>
+
+<body>
+
+    <!-- Main Container -->
+    <div class="mx-auto p-6 container">
+        <h1 class="mb-8 font-bold text-4xl text-center text-gray-800">Income-Expense Tracker</h1>
+
+        <!-- Summary Section -->
+        <div class="gap-6 grid grid-cols-1 sm:grid-cols-3 mb-8">
+            <div class="bg-white shadow-md p-4 rounded-lg card">
+                <h2 class="font-semibold text-gray-700 text-xl">Total Income</h2>
+                <p id="total-income" class="font-bold text-3xl text-green-500">₹0.00</p>
+            </div>
+            <div class="bg-white shadow-md p-4 rounded-lg card">
+                <h2 class="font-semibold text-gray-700 text-xl">Total Expenses</h2>
+                <p id="total-expense" class="font-bold text-3xl text-red-500">₹0.00</p>
+            </div>
+            <div class="bg-white shadow-md p-4 rounded-lg card">
+                <h2 class="font-semibold text-gray-700 text-xl">Net Balance</h2>
+                <p id="net-balance" class="font-bold text-3xl text-blue-500">₹0.00</p>
+            </div>
+        </div>
+
+        <!-- Add Entry Form -->
+        <div class="bg-white shadow-md mb-6 p-6 rounded-lg card">
+            <h2 class="mb-4 font-semibold text-2xl">Add New Entry</h2>
+            <form id="entry-form" class="gap-4 grid grid-cols-1 sm:grid-cols-2">
+                <div>
+                    <label for="description" class="block mb-2 text-gray-700">Description</label>
+                    <input type="text" id="description" placeholder="Description" class="p-2 border rounded-md w-full"
+                        required>
+                </div>
+                <div>
+                    <label for="amount" class="block mb-2 text-gray-700">Amount</label>
+                    <input type="number" id="amount" placeholder="Amount" class="p-2 border rounded-md w-full" required>
+                </div>
+                <div>
+                    <label class="block mb-2 text-gray-700">Type</label>
+                    <div class="flex items-center">
+                        <input type="radio" id="income" name="type" value="income" class="mr-2" checked>
+                        <label for="income" class="mr-4">Income</label>
+                        <input type="radio" id="expense" name="type" value="expense" class="mr-2">
+                        <label for="expense">Expense</label>
+                    </div>
+                </div>
+                <button type="submit"
+                    class="bg-indigo-500 hover:bg-indigo-600 mt-4 sm:mt-0 p-2 rounded-md text-white transition-all">Add
+                    Entry</button>
+            </form>
+        </div>
+
+        <!-- Entries Filter Section -->
+        <div class="mb-6">
+            <h3 class="mb-4 font-semibold text-xl">Filter Entries</h3>
+            <div class="flex space-x-4">
+                <button id="all-filter" class="bg-gray-200 hover:bg-gray-300 p-2 rounded-md transition-all">All</button>
+                <button id="income-filter"
+                    class="bg-green-200 hover:bg-green-300 p-2 rounded-md transition-all">Income</button>
+                <button id="expense-filter"
+                    class="bg-red-200 hover:bg-red-300 p-2 rounded-md transition-all">Expenses</button>
+            </div>
+        </div>
+
+        <!-- Entries Table -->
+        <table class="bg-white shadow-md rounded-lg min-w-full card">
+            <thead class="bg-gray-200 text-left">
+                <tr class="border-gray-300 border-b text-gray-700">
+                    <th class="p-4">Description</th>
+                    <th class="p-4">Amount</th>
+                    <th class="p-4">Type</th>
+                    <th class="p-4">Actions</th>
+                </tr>
+            </thead>
+            <tbody id="entries-list">
+                <!-- Dynamic Entries will go here -->
+            </tbody>
+        </table>
+
+    </div>
+
+    <!-- Edit Modal (Hidden by default) -->
+    <div id="edit-modal" class="fixed inset-0 flex justify-center items-center hidden bg-gray-800 bg-opacity-50">
+        <div class="bg-white shadow-lg p-6 rounded-lg w-1/2 modal">
+            <h3 class="mb-4 font-bold text-xl">Edit Entry</h3>
+            <form id="edit-entry-form" class="gap-4 grid grid-cols-1">
+                <div>
+                    <label for="edit-description" class="block mb-2 text-gray-700">Description</label>
+                    <input type="text" id="edit-description" class="p-2 border rounded-md w-full" required>
+                </div>
+                <div>
+                    <label for="edit-amount" class="block mb-2 text-gray-700">Amount</label>
+                    <input type="number" id="edit-amount" class="p-2 border rounded-md w-full" required>
+                </div>
+                <div>
+                    <label class="block mb-2 text-gray-700">Type</label>
+                    <div class="flex items-center">
+                        <input type="radio" id="edit-income" name="edit-type" value="income" class="mr-2">
+                        <label for="edit-income" class="mr-4">Income</label>
+                        <input type="radio" id="edit-expense" name="edit-type" value="expense" class="mr-2">
+                        <label for="edit-expense">Expense</label>
+                    </div>
+                </div>
+                <button type="submit"
+                    class="bg-blue-500 hover:bg-blue-600 p-2 rounded-md text-white transition-all">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- GitHub Link-->
+    <div class="github-link-container">
+        <a href="https://github.com/suhailpno/FSD-WD-T-B4-T4.git" target="_blank" class="github-link">
+            <img src="images/GH.svg" alt="GitHub Logo" class="github-logo">
+            <span class="github-text">Source Code</span>
+        </a>
+    </div>
+
+    <!-- Main JS File -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
+</html>

@@ -1,0 +1,86 @@
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f3f4f6;
+}
+
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.button-primary {
+  background-color: #6366f1;
+  transition: background-color 0.3s;
+}
+
+.button-primary:hover {
+  background-color: #4f46e5;
+}
+
+.modal {
+  transition: opacity 0.3s ease;
+}
+
+.entry-row {
+  border-bottom: 4px solid transparent; /* Default border color */
+  transition: border-color 0.3s ease;
+}
+.entry-row.income {
+  border-bottom-color: #10b981; /* Green for income */
+}
+.entry-row.expense {
+  border-bottom-color: #ef4444; /* Red for expense */
+}
+
+/* GitHub Link Container */
+.github-link-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px; /* Aligns the container to the right side */
+  display: flex;
+  align-items: center;
+  background-color: #ffffff; /* Light background for the container */
+  padding: 8px 16px; /* Adjust padding for a compact look */
+  border-radius: 30px; /* Rounded container for a sleek look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for a floating effect */
+  border: 1px solid #e0e0e0; /* Light border for a modern look */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.github-link-container:hover {
+  background-color: #f1f1f1; /* Slight background color change on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* GitHub Link Styling */
+.github-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333; /* Dark text color */
+  font-size: 14px; /* Smaller text size */
+  font-weight: 500; /* Medium font weight */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.github-link:hover {
+  color: #0366d6; /* Color change on hover */
+}
+
+/* GitHub Logo Styling */
+.github-logo {
+  width: 20px; /* Smaller logo size */
+  height: 20px;
+  border-radius: 50%; /* Rounded logo */
+  margin-right: 8px; /* Spacing between logo and text */
+  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth hover effects */
+}
+
+.github-logo:hover {
+  transform: scale(1.2); /* Slight zoom effect on hover */
+  filter: brightness(0) invert(1); /* Invert color on hover */
+}
